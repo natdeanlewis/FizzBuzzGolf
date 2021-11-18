@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Linq;
 
 namespace FizzBuzzGolf
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Enumerable.Range(1, 100)
+                .Select(i =>
+                    (i % 3 == 0) | (i % 5 == 0) | (i % 7 == 0)
+                        ? string.Concat(i % 3 == 0 ? "Fizz" : "", i % 5 == 0 ? "Buzz" : "", i % 7 == 0 ? "Bang" : "")
+                        : i.ToString()).ToList().ForEach(Console.WriteLine);
         }
     }
 }
